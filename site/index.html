@@ -12,17 +12,19 @@
 <meta property="og:image" content="img/chatrain.jpg">
 <meta name="theme-color" content="#0f1117">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preload" href="fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/GmarketSansBold.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/pretendard-page.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/gmarket-bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
-/* 프리텐다드 가변 글꼴 (OFL) */
-@font-face { font-family: "Pretendard Variable"; src: url("fonts/PretendardVariable.woff2") format("woff2-variations"); font-weight: 45 920; font-display: swap; }
-/* 지마켓 산스 (G마켓 무료 글꼴, 상업적 이용 가능) — 제목과 숫자에만 */
-@font-face { font-family: "Gmarket Sans"; src: url("fonts/GmarketSansMedium.woff") format("woff"); font-weight: 400 600; font-display: swap; }
-@font-face { font-family: "Gmarket Sans"; src: url("fonts/GmarketSansBold.woff") format("woff"); font-weight: 650 900; font-display: swap; }
+/* 글꼴은 이 페이지에 쓰인 글자만 남긴 파일 (fonts-src/subset.sh 로 다시 만듦)
+   프리텐다드: page = 페이지 글자, ks = 한글 2,350자 예비(입력란에 친 글자 등 page 에 없는 글자가 나올 때만 받음)
+   지마켓 산스(G마켓 무료 글꼴, 상업적 이용 가능): 제목과 숫자에만 */
+@font-face { font-family: "Pretendard Page"; src: url("fonts/pretendard-page.woff2") format("woff2"); font-weight: 45 920; font-display: swap; }
+@font-face { font-family: "Pretendard KS"; src: url("fonts/pretendard-ks.woff2") format("woff2"); font-weight: 45 920; font-display: swap; }
+@font-face { font-family: "Gmarket Sans"; src: url("fonts/gmarket-medium.woff2") format("woff2"); font-weight: 400 600; font-display: swap; }
+@font-face { font-family: "Gmarket Sans"; src: url("fonts/gmarket-bold.woff2") format("woff2"); font-weight: 650 900; font-display: swap; }
 
 /* Layout: 마크 핫바를 내비로 쓰는 한 장짜리 소개. 슬롯 = 섹션, 숫자키 1~7로 이동. 힘은 히어로 까마귀와 핫바에만. */
 :root {
@@ -41,8 +43,8 @@
   --grid: rgba(52, 89, 138, 0.06);
   --head-bg: rgba(233, 236, 241, 0.86);
   --scrim: rgba(10, 12, 16, 0.86);
-  --font-sans: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-display: "Gmarket Sans", "Pretendard Variable", "Pretendard", "Malgun Gothic", sans-serif;
+  --font-sans: "Pretendard Page", "Pretendard KS", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-display: "Gmarket Sans", "Pretendard Page", "Pretendard KS", "Pretendard", "Malgun Gothic", sans-serif;
   --font-mono: "JetBrains Mono", "Consolas", "Courier New", monospace;
   --step--1: 0.8125rem;
   --step-0: 1rem;
@@ -258,6 +260,10 @@ dl.spec dd { margin: 0; color: var(--muted); min-width: 0; }
 .faq summary::after { content: "+"; font-family: var(--font-mono); font-weight: 700; color: var(--accent); flex: none; }
 .faq details[open] summary::after { content: "−"; }
 .faq details p { margin: 0 0 18px; color: var(--muted); max-width: 40em; }
+.faq details { overflow: hidden; }
+.faq summary::after { transition: transform 0.25s; }
+.faq details[open] summary::after { transform: rotate(180deg); }
+.faq summary:hover { color: var(--accent); }
 
 /* 문의 */
 .contact-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: start; }
@@ -798,6 +804,24 @@ footer .mono { letter-spacing: 0.06em; }
   lb.addEventListener("keydown", function (e) {
     if (e.key === "ArrowLeft") show(at - 1);
     else if (e.key === "ArrowRight") show(at + 1);
+  });
+
+  // FAQ: 펼치고 접을 때 높이를 부드럽게 바꾼다
+  document.querySelectorAll(".faq details").forEach(function (d) {
+    var sum = d.querySelector("summary"), anim = null;
+    sum.addEventListener("click", function (e) {
+      if (still || !d.animate) return;
+      e.preventDefault();
+      if (anim) anim.cancel();
+      var start = d.offsetHeight + "px", closing = d.open;
+      if (!closing) d.open = true;
+      var end = (closing ? sum.offsetHeight : d.scrollHeight) + "px";
+      anim = d.animate({ height: [start, end] }, { duration: closing ? 220 : 300, easing: "cubic-bezier(0.2, 0.7, 0.2, 1)" });
+      var p = d.querySelector("p");
+      if (!closing && p) p.animate({ opacity: [0, 1], transform: ["translateY(-6px)", "none"] }, { duration: 300, easing: "ease-out" });
+      anim.onfinish = function () { if (closing) d.open = false; anim = null; };
+      anim.oncancel = function () { anim = null; };
+    });
   });
 
   // 규모 카드 → 문의 양식
