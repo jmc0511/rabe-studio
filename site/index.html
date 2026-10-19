@@ -12,10 +12,11 @@
 <meta name="theme-color" content="#101218">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
+/* 프리텐다드 가변 글꼴 (OFL) */
+@font-face { font-family: "Pretendard Variable"; src: url("fonts/PretendardVariable.woff2") format("woff2-variations"); font-weight: 45 920; font-display: swap; }
+
 html{color-scheme:light dark}body{margin:0;font-size:14px;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="preload" href="fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Layout: 16x16 청크 격자 위에 놓인 한 장짜리 스튜디오 소개. 히어로의 픽셀 까마귀 하나에만 힘을 준다. */
 :root {
@@ -29,9 +30,9 @@ html{color-scheme:light dark}body{margin:0;font-size:14px;-webkit-text-size-adju
   --eye: #f7f8fa;
   --raven: #15171d;       /* 까마귀 몸 (다크 모드에서도 어두운 새) */
   --grid: rgba(58, 95, 143, 0.07);
-  --font-display: "Noto Sans KR", "Malgun Gothic", sans-serif;
-  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-pixel: "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-display: "Pretendard Variable", "Pretendard", "Malgun Gothic", sans-serif;
+  --font-body: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-pixel: "Pretendard Variable", "Pretendard", "Malgun Gothic", sans-serif;
   --step--1: 0.8125rem;
   --step-0: 1rem;
   --step-1: 1.25rem;
