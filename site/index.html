@@ -322,6 +322,10 @@ dl.spec dd { margin: 0; color: var(--muted); min-width: 0; }
   background: transparent; color: var(--accent); border: 1px solid var(--line); padding: 5px 12px; cursor: pointer;
 }
 .copy:hover { border-color: var(--accent); }
+.ch-link { display: block; text-decoration: none; border: 2px solid var(--ink); transition: border-color 0.15s, box-shadow 0.15s; }
+.ch-link:hover { border-color: var(--accent); box-shadow: 4px 4px 0 var(--accent-soft); }
+.ch-link .go { flex: none; font-size: var(--step--1); font-weight: 700; color: var(--accent); }
+.ch-link .sub { font-size: var(--step--1); color: var(--muted); margin-top: 2px; }
 .how { margin: 4px 0 0; padding: 0; list-style: none; counter-reset: h; display: grid; gap: 6px; font-size: 0.9375rem; color: var(--muted); }
 .how li { counter-increment: h; padding-left: 26px; position: relative; }
 .how li::before { content: counter(h); position: absolute; left: 0; top: 0.2em; width: 18px; height: 18px; display: grid; place-items: center; font-family: var(--font-mono); font-size: 11px; font-weight: 700; border: 1px solid var(--accent); color: var(--accent); }
@@ -683,10 +687,11 @@ footer .mono { letter-spacing: 0.06em; }
         <div class="channels">
           <ol class="how">
             <li>양식을 채우고 <b>문의 내용 복사</b>를 누릅니다</li>
-            <li>디스코드 DM이나 메일에 붙여 넣어 보냅니다</li>
+            <li>디스코드 서버의 문의하기 채널, DM, 메일 중 편한 곳에 붙여 넣습니다</li>
             <li>확인하는 대로 답장 드립니다</li>
           </ol>
-          <div class="ch"><div class="k">DISCORD</div><div class="row"><div class="v" id="v-discord">kdz0511</div><button type="button" class="copy" data-target="v-discord">복사</button></div></div>
+          <a class="ch ch-link" href="https://discord.gg/w2MkEeBfQC" target="_blank" rel="noopener"><div class="k">DISCORD SERVER</div><div class="row"><div class="v">라베 스튜디오 서버</div><span class="go">참여하기 <span aria-hidden="true">→</span></span></div><div class="sub">문의하기 채널에 붙여 넣으면 됩니다</div></a>
+          <div class="ch"><div class="k">DISCORD DM</div><div class="row"><div class="v" id="v-discord">kdz0511</div><button type="button" class="copy" data-target="v-discord">복사</button></div></div>
           <div class="ch"><div class="k">E-MAIL</div><div class="row"><div class="v" id="v-email">dazun511@gmail.com</div><button type="button" class="copy" data-target="v-email">복사</button></div></div>
         </div>
       </div>
@@ -697,6 +702,7 @@ footer .mono { letter-spacing: 0.06em; }
 <footer>
   <div class="wrap">
     <span>© 2026 라베 스튜디오</span>
+    <a class="mono" href="https://discord.gg/w2MkEeBfQC" target="_blank" rel="noopener">DISCORD</a>
     <span class="mono">CRAFTED BY RABE</span>
   </div>
 </footer>
