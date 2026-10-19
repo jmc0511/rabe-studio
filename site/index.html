@@ -310,6 +310,48 @@ footer .mono { letter-spacing: 0.06em; }
   dl.spec > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   section.block { padding-block: 56px; }
 }
+/* 애니메이션: 첫 화면은 차례로 올라오고, 아래 섹션은 스크롤에 맞춰 떠오른다 (지원 안 하는 브라우저는 그냥 보임) */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise { from { transform: translateY(22px); } to { transform: none; } }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes pop { 0% { transform: translateY(0) scale(1); } 45% { transform: translateY(-4px) scale(1.06); } 100% { transform: translateY(-2px) scale(1); } }
+  @keyframes shine { from { background-position: 200% 0; } to { background-position: -100% 0; } }
+  .hero .eyebrow, .hero h1, .hero .lede, .hero .cta-row, .hero .proof li, .raven-box { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .hero .eyebrow { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.15s; }
+  .hero .lede { animation-delay: 0.3s; }
+  .hero .cta-row { animation-delay: 0.42s; }
+  .hero .proof li:nth-child(1) { animation-delay: 0.55s; }
+  .hero .proof li:nth-child(2) { animation-delay: 0.62s; }
+  .hero .proof li:nth-child(3) { animation-delay: 0.69s; }
+  .hero .proof li:nth-child(4) { animation-delay: 0.76s; }
+  .raven-box { animation-delay: 0.1s; }
+  #raven { animation: bob 2.4s steps(4, jump-none) 1.6s infinite; }
+  h1 em {
+    background: linear-gradient(100deg, var(--accent) 40%, var(--ink) 50%, var(--accent) 60%) 0 0 / 250% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shine 1.6s ease-out 0.9s both;
+  }
+  .slot[aria-current="true"] { animation: pop 0.28s ease-out; }
+  .svc, .tier, .promise { transition: transform 0.18s, translate 0.18s, box-shadow 0.18s, border-color 0.18s; }
+  .svc:hover, .promise:hover, .tier:hover { transform: translateY(-4px); box-shadow: 6px 6px 0 var(--accent-soft); border-color: var(--accent); }
+  .btn-main .arrow { display: inline-block; transition: transform 0.15s; }
+  .btn-main:hover .arrow { transform: translateX(4px); }
+  dialog.lightbox[open] { animation: fade 0.18s ease-out; }
+
+  @supports (animation-timeline: view()) {
+    @keyframes reveal { from { opacity: 0.15; transform: translateY(36px); } to { opacity: 1; transform: none; } }
+    @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .sec-title, .case > div, .svc, .promise, .tier, ol.steps li, .gallery figure, dl.spec > div, .faq details, .brief, .channels {
+      animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 70%;
+    }
+    .svc:nth-child(2), .tier:nth-child(2), .promise:nth-child(3n+2), ol.steps li:nth-child(2), .gallery figure:nth-child(even) { animation-range: entry 8% entry 80%; }
+    .svc:nth-child(3), .tier:nth-child(3), .promise:nth-child(3n), ol.steps li:nth-child(3) { animation-range: entry 16% entry 90%; }
+    ol.steps li::after { transform-origin: left; animation: draw linear both; animation-timeline: view(); animation-range: entry 40% cover 40%; }
+    .svc:hover, .promise:hover, .tier:hover { translate: 0 -4px; transform: none; }
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn, .slot, .shot-btn img { transition: none; }
@@ -342,7 +384,7 @@ footer .mono { letter-spacing: 0.06em; }
         <h1>마인크래프트<br><em>컨텐츠 서버</em> 제작팀</h1>
         <p class="lede">라베 스튜디오는 방송용 마인크래프트 서버를 만듭니다. 기획부터 플러그인, 전용 클라이언트 모드, 방송 당일 운영까지 한 사람이 끝까지 맡습니다.</p>
         <div class="cta-row">
-          <a class="btn btn-main" href="#contact">제작 문의하기 <span aria-hidden="true">→</span></a>
+          <a class="btn btn-main" href="#contact">제작 문의하기 <span class="arrow" aria-hidden="true">→</span></a>
           <a class="btn btn-ghost" href="#works">작품 보기</a>
         </div>
         <ul class="proof" aria-label="한눈에 보기">
@@ -671,11 +713,25 @@ footer .mono { letter-spacing: 0.06em; }
     paint(raven, RAVEN, false);
     glyphs.forEach(function (g) { paint(g, GLYPHS[g.dataset.glyph], false); });
   }
-  paintAll();
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // 첫 화면에서 까마귀를 블록 놓듯 한 칸씩 쌓는다
+  function build(done) {
+    var c = raven.getContext("2d"), cells = [];
+    var map = { r: css("--raven"), f: css("--accent"), b: css("--beak"), e: css("--eye"), l: css("--muted") };
+    RAVEN.forEach(function (row, y) { for (var x = 0; x < row.length; x++) if (row[x] !== ".") cells.push([x, y, row[x]]); });
+    cells.sort(function (a, b) { return (b[1] - a[1]) || (Math.random() - 0.5); }); // 다리부터 위로
+    c.clearRect(0, 0, 16, 16);
+    var i = 0, per = Math.ceil(cells.length / 28);
+    (function step() {
+      for (var k = 0; k < per && i < cells.length; k++, i++) { c.fillStyle = map[cells[i][2]]; c.fillRect(cells[i][0], cells[i][1], 1, 1); }
+      if (i < cells.length) requestAnimationFrame(step); else done();
+    })();
+  }
+  glyphs.forEach(function (g) { paint(g, GLYPHS[g.dataset.glyph], false); });
+  if (still) paint(raven, RAVEN, false); else setTimeout(function () { build(function () { paint(raven, RAVEN, false); }); }, 250);
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
   if (mq.addEventListener) mq.addEventListener("change", paintAll);
   new MutationObserver(paintAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!still) {
     setInterval(function () {
       paint(raven, RAVEN, true);
