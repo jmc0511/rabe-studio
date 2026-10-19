@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="라베 스튜디오">
 <meta property="og:description" content="마인크래프트 컨텐츠 서버를 만드는 1인 제작팀. 기획부터 플러그인, 전용 클라이언트 모드, 방송 당일 운영까지.">
-<meta property="og:image" content="img/chatrain.jpg">
+<meta property="og:image" content="https://jmc0511.github.io/rabe-studio/img/chatrain.jpg">
 <meta name="theme-color" content="#0f1117">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/pretendard-page.woff2" as="font" type="font/woff2" crossorigin>
@@ -168,6 +168,8 @@ h1, h2, h3, .proof b, .facts dd, .promise strong { font-synthesis: none; }
 /* 작품 */
 .case { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; align-items: start; }
 .case > div { min-width: 0; }
+.case + .case { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--line); }
+.work-no { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); margin: 0 0 6px; }
 .work-title { font-size: clamp(1.5rem, 3vw, 1.9rem); margin: 0 0 6px; line-height: 1.25; text-wrap: balance; }
 .work-sub { margin: 0 0 16px; color: var(--muted); }
 .chips { list-style: none; margin: 0 0 22px; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
@@ -478,6 +480,7 @@ footer .mono { letter-spacing: 0.06em; }
         </div>
 
         <div>
+          <p class="work-no">No. 01</p>
           <h3 class="work-title">채팅이 정하는 생존</h3>
           <p class="work-sub">시청자의 채팅 투표와 후원이 스트리머의 생존을 좌우하는 방송 컨텐츠</p>
           <ul class="chips" aria-label="특징">
@@ -502,6 +505,55 @@ footer .mono { letter-spacing: 0.06em; }
             <li>채팅 조종권 · 시청자가 친 "앞 · 뒤 · 점프"대로 스트리머가 움직입니다</li>
             <li>시청자 몹 · 방금 채팅한 시청자의 닉네임을 단 좀비가 쫓아옵니다</li>
             <li>그 밖에 거울 세계, 금지어, 가짜 죽음, 세상 축소 등</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case">
+        <div>
+          <figure class="main-shot">
+            <button type="button" class="shot-btn" aria-label="폴리스 라인 사진 크게 보기">
+              <img src="img/cs_body.jpg" alt="거실 바닥에 쓰러진 시신 둘레로 노란 폴리스 라인과 증거 번호표가 둘러진 장면" width="854" height="480" loading="lazy">
+              <span class="zoom" aria-hidden="true">크게 보기</span>
+            </button>
+            <figcaption>폴리스 라인 · 시신이 발견되면 둘레에 출입 금지 테이프와 증거 번호표가 쳐집니다</figcaption>
+          </figure>
+          <div class="gallery">
+            <figure><button type="button" class="shot-btn" aria-label="시신 발견 크게 보기"><img src="img/cs_found.jpg" alt="시신 발견 도장이 화면에 찍히고 발견자와 장소가 뜨는 장면" width="854" height="480" loading="lazy"></button><figcaption>시신 발견</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="CCTV 다시보기 크게 보기"><img src="img/cs_replay.jpg" alt="거실 CCTV 카메라 시점에서 과거 움직임이 유령처럼 재생되는 화면" width="854" height="480" loading="lazy"></button><figcaption>CCTV 다시보기</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="펜션 외관 크게 보기"><img src="img/cs_front.jpg" alt="폭풍우 치는 밤, 가로등이 늘어선 길 끝의 외딴 펜션" width="854" height="480" loading="lazy"></button><figcaption>외딴 펜션</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="역할 카드 크게 보기"><img src="img/cs_card.jpg" alt="당신은 탐정이라고 적힌 역할 카드가 화면 가운데 뜬 장면" width="854" height="480" loading="lazy"></button><figcaption>역할 카드</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="판결 크게 보기"><img src="img/cs_verdict.jpg" alt="지목된 사람이 범인으로 밝혀져 GUILTY 도장이 찍힌 장면" width="854" height="480" loading="lazy"></button><figcaption>판결</figcaption></figure>
+            <figure><button type="button" class="shot-btn ov" aria-label="오버레이 크게 보기"><img src="img/cs_overlay.jpg" alt="OBS 오버레이의 사건 시각, 생존과 사망, 구조 무전, 펜션의 사람들 명단" width="560" height="520" loading="lazy"></button><figcaption>오버레이</figcaption></figure>
+          </div>
+        </div>
+
+        <div>
+          <p class="work-no">No. 02</p>
+          <h3 class="work-title">사건 현장</h3>
+          <p class="work-sub">폭풍우로 고립된 외딴 펜션, 모인 사람들 사이에 숨은 범인을 찾는 추리 상황극</p>
+          <ul class="chips" aria-label="특징">
+            <li>추리 · 상황극</li>
+            <li>전용 리소스팩 자동 적용</li>
+            <li>OBS 오버레이</li>
+          </ul>
+          <dl class="facts">
+            <div><dt>인원</dt><dd>4~12명</dd></div>
+            <div><dt>단서</dt><dd>3종</dd></div>
+            <div><dt>인물 카드</dt><dd>직업 12종</dd></div>
+            <div><dt>지원 버전</dt><dd>1.21.4</dd></div>
+          </dl>
+          <h4>플레이 방식</h4>
+          <ul class="ticks">
+            <li>범인은 밤마다 한 명씩 해치우고, 두꺼비집을 내려 정전을 일으킬 수 있습니다</li>
+            <li>시신이 발견되면 수사 시간이 열리고, 토론과 투표로 범인을 지목합니다</li>
+            <li>탐정이 할 일을 모두 끝내면 무전이 닿아 구조대가 도착합니다</li>
+          </ul>
+          <h4>추리의 재료</h4>
+          <ul class="ticks">
+            <li>CCTV 다시보기 · 그 시간 카메라 앞을 지난 사람이 유령처럼 다시 걷습니다. 흉기를 꺼내 든 모습도 찍힙니다</li>
+            <li>출입 기록부와 발자국 · 누가 언제 어느 문을 열었는지, 어떤 색 신발이 지나갔는지 남습니다</li>
+            <li>정전 중엔 기록이 비고, 끝나면 숨겨져 있던 일까지 사건 일지로 공개됩니다</li>
           </ul>
         </div>
       </div>
