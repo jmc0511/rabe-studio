@@ -12,13 +12,10 @@
 <meta name="theme-color" content="#101218">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
-/* 갈무리11 (OFL) — 픽셀 글꼴이라 가짜 굵게를 끄고 Bold 파일을 따로 쓴다 */
-@font-face { font-family: "Galmuri11"; src: url("fonts/Galmuri11.woff2") format("woff2"); font-weight: 400 500; font-display: swap; }
-@font-face { font-family: "Galmuri11"; src: url("fonts/Galmuri11-Bold.woff2") format("woff2"); font-weight: 600 900; font-display: swap; }
-@font-face { font-family: "Galmuri Display"; src: url("fonts/Galmuri11-Bold.woff2") format("woff2"); font-display: swap; }
 html{color-scheme:light dark}body{margin:0;font-size:14px;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
-<link rel="preload" href="fonts/Galmuri11.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/Galmuri11-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
 <style>
 /* Layout: 16x16 청크 격자 위에 놓인 한 장짜리 스튜디오 소개. 히어로의 픽셀 까마귀 하나에만 힘을 준다. */
 :root {
@@ -32,9 +29,9 @@ html{color-scheme:light dark}body{margin:0;font-size:14px;-webkit-text-size-adju
   --eye: #f7f8fa;
   --raven: #15171d;       /* 까마귀 몸 (다크 모드에서도 어두운 새) */
   --grid: rgba(58, 95, 143, 0.07);
-  --font-display: "Galmuri Display", "Malgun Gothic", sans-serif;
-  --font-body: "Galmuri11", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-pixel: "Galmuri11", "Courier New", monospace;
+  --font-display: "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-pixel: "Noto Sans KR", "Malgun Gothic", sans-serif;
   --step--1: 0.8125rem;
   --step-0: 1rem;
   --step-1: 1.25rem;
@@ -91,7 +88,7 @@ nav a:hover { color: var(--ink); }
 }
 .eyebrow { font-family: var(--font-pixel); font-size: var(--step--1); letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; }
 h1 {
-  font-family: var(--font-display); font-weight: 400; font-size: var(--step-3); line-height: 1.08;
+  font-family: var(--font-display); font-weight: 800; font-size: var(--step-3); line-height: 1.08;
   margin: 12px 0 20px; text-wrap: balance; letter-spacing: -0.01em;
 }
 h1 em { font-style: normal; color: var(--accent); }
@@ -113,7 +110,7 @@ h1 em { font-style: normal; color: var(--accent); }
 /* 섹션 공통 */
 section.block { padding-block: 56px; border-top: 1px solid var(--line); }
 .sec-head { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 32px; }
-h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2); line-height: 1.2; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--step-2); line-height: 1.2; margin: 0; text-wrap: balance; }
 .sec-head .label { font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 6px; }
 .sec-body { min-width: 0; }
 .sec-body p { margin: 0 0 14px; max-width: 38em; }
@@ -121,7 +118,7 @@ h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2
 /* 이름 */
 .names { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 .name-card { min-width: 0; }
-.name-card .word { font-family: var(--font-display); font-size: var(--step-2); }
+.name-card .word { font-family: var(--font-display); font-weight: 800; font-size: var(--step-2); }
 .name-card .word small { font-family: var(--font-pixel); font-size: var(--step--1); color: var(--accent); margin-left: 8px; letter-spacing: 0.06em; }
 .name-card p { color: var(--muted); margin: 6px 0 0; }
 
@@ -129,7 +126,7 @@ h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2
 .work { display: grid; gap: 22px; }
 .work-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
 .work-head > div { min-width: 0; }
-.work-title { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2); margin: 0; line-height: 1.2; text-wrap: balance; }
+.work-title { font-family: var(--font-display); font-weight: 800; font-size: var(--step-2); margin: 0; line-height: 1.2; text-wrap: balance; }
 .work-sub { margin: 4px 0 0; color: var(--muted); }
 .chips { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
 .chips li { font-size: var(--step--1); font-weight: 500; border: 1px solid var(--line); background: var(--surface); padding: 3px 10px; }
@@ -141,7 +138,7 @@ h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2
 .facts { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 3px solid var(--ink); }
 .facts > div { padding-top: 10px; min-width: 0; }
 .facts dt { font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
-.facts dd { margin: 2px 0 0; font-family: var(--font-display); font-size: var(--step-1); font-variant-numeric: tabular-nums; }
+.facts dd { margin: 2px 0 0; font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); font-variant-numeric: tabular-nums; }
 .work-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .work-cols > div { min-width: 0; }
 .work-cols h4 { margin: 0 0 8px; font-size: var(--step-0); }
@@ -155,7 +152,7 @@ h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2
 .svc { padding: 24px; min-width: 0; border-right: 1px solid var(--line); }
 .svc:last-child { border-right: 0; }
 .svc .glyph { width: 24px; height: 24px; image-rendering: pixelated; margin-bottom: 14px; display: block; }
-.svc h3 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-1); margin: 0 0 8px; }
+.svc h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); margin: 0 0 8px; }
 .svc p { color: var(--muted); font-size: 0.9375rem; margin: 0 0 12px; }
 .svc ul { margin: 0; padding: 0; list-style: none; font-size: 0.9375rem; display: grid; gap: 4px; }
 .svc li::before { content: "■"; color: var(--accent); font-size: 0.6em; margin-right: 8px; vertical-align: 0.25em; }
@@ -165,13 +162,13 @@ h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2
 ol.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; counter-reset: s; }
 ol.steps li { counter-increment: s; min-width: 0; padding-top: 14px; border-top: 3px solid var(--ink); }
 ol.steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--font-pixel); font-size: var(--step--1); color: var(--accent); display: block; margin-bottom: 6px; }
-ol.steps h3 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-1); margin: 0 0 6px; }
+ol.steps h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); margin: 0 0 6px; }
 ol.steps p { margin: 0; color: var(--muted); font-size: 0.9375rem; }
 
 /* 1인 팀 */
 .why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .why div { min-width: 0; }
-.why strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: var(--step-1); margin-bottom: 4px; }
+.why strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); margin-bottom: 4px; }
 .why p { margin: 0; color: var(--muted); font-size: 0.9375rem; }
 
 /* 규모와 기간 */
@@ -180,7 +177,7 @@ table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; min-width:
 th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
 tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 thead th { font-family: var(--font-pixel); font-weight: 400; font-size: 11px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
-tbody th { font-family: var(--font-display); font-weight: 400; font-size: var(--step-1); white-space: nowrap; }
+tbody th { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); white-space: nowrap; }
 td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .note { color: var(--muted); font-size: 0.9375rem; margin-top: 14px; }
 
