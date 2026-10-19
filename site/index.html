@@ -11,10 +11,11 @@
 <meta property="og:image" content="img/chatrain.jpg">
 <meta name="theme-color" content="#101218">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<style>html{color-scheme:light dark}body{margin:0;font-size:14px;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;700&family=Silkscreen:wght@400;700&display=swap">
+<style>
+/* 둥근모꼴 (OFL) — 굵기가 하나뿐이라 가짜 굵게를 끈다 */
+@font-face { font-family: "DungGeunMo"; src: url("fonts/DungGeunMo.woff") format("woff"); font-display: swap; }
+html{color-scheme:light dark}body{margin:0;font-size:14px;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preload" href="fonts/DungGeunMo.woff" as="font" type="font/woff" crossorigin>
 <style>
 /* Layout: 16x16 청크 격자 위에 놓인 한 장짜리 스튜디오 소개. 히어로의 픽셀 까마귀 하나에만 힘을 준다. */
 :root {
@@ -28,9 +29,9 @@
   --eye: #f7f8fa;
   --raven: #15171d;       /* 까마귀 몸 (다크 모드에서도 어두운 새) */
   --grid: rgba(58, 95, 143, 0.07);
-  --font-display: "Do Hyeon", "Black Han Sans", "Malgun Gothic", sans-serif;
-  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-pixel: "Silkscreen", "Courier New", monospace;
+  --font-display: "DungGeunMo", "Malgun Gothic", sans-serif;
+  --font-body: "DungGeunMo", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-pixel: "DungGeunMo", "Courier New", monospace;
   --step--1: 0.8125rem;
   --step-0: 1rem;
   --step-1: 1.25rem;
@@ -59,6 +60,8 @@ body {
   background-size: 64px 64px;
   color: var(--ink);
   font-family: var(--font-body);
+  font-synthesis: none;
+  word-break: keep-all;
   font-size: var(--step-0);
   line-height: 1.7;
   padding-inline: 20px;
