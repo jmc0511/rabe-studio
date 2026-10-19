@@ -12,10 +12,13 @@
 <meta name="theme-color" content="#101218">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
-/* 둥근모꼴 (OFL) — 굵기가 하나뿐이라 가짜 굵게를 끈다 */
-@font-face { font-family: "DungGeunMo"; src: url("fonts/DungGeunMo.woff") format("woff"); font-display: swap; }
+/* 갈무리11 (OFL) — 픽셀 글꼴이라 가짜 굵게를 끄고 Bold 파일을 따로 쓴다 */
+@font-face { font-family: "Galmuri11"; src: url("fonts/Galmuri11.woff2") format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "Galmuri11"; src: url("fonts/Galmuri11-Bold.woff2") format("woff2"); font-weight: 600 900; font-display: swap; }
+@font-face { font-family: "Galmuri Display"; src: url("fonts/Galmuri11-Bold.woff2") format("woff2"); font-display: swap; }
 html{color-scheme:light dark}body{margin:0;font-size:14px;-webkit-text-size-adjust:100%}img{max-width:100%}[hidden]{display:none!important}</style>
-<link rel="preload" href="fonts/DungGeunMo.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/Galmuri11.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Galmuri11-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Layout: 16x16 청크 격자 위에 놓인 한 장짜리 스튜디오 소개. 히어로의 픽셀 까마귀 하나에만 힘을 준다. */
 :root {
@@ -29,9 +32,9 @@ html{color-scheme:light dark}body{margin:0;font-size:14px;-webkit-text-size-adju
   --eye: #f7f8fa;
   --raven: #15171d;       /* 까마귀 몸 (다크 모드에서도 어두운 새) */
   --grid: rgba(58, 95, 143, 0.07);
-  --font-display: "DungGeunMo", "Malgun Gothic", sans-serif;
-  --font-body: "DungGeunMo", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-pixel: "DungGeunMo", "Courier New", monospace;
+  --font-display: "Galmuri Display", "Malgun Gothic", sans-serif;
+  --font-body: "Galmuri11", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-pixel: "Galmuri11", "Courier New", monospace;
   --step--1: 0.8125rem;
   --step-0: 1rem;
   --step-1: 1.25rem;
