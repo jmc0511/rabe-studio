@@ -199,6 +199,7 @@ figure { margin: 0; min-width: 0; }
 figcaption { font-size: var(--step--1); color: var(--muted); margin-top: 8px; }
 .gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
 .gallery figcaption { font-size: 0.75rem; margin-top: 4px; }
+.gallery-label { margin: 22px 0 -8px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); }
 
 /* 라이트박스 */
 dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); width: 100%; color: #e7e9ef; }
@@ -526,6 +527,15 @@ footer .mono { letter-spacing: 0.06em; }
             <figure><button type="button" class="shot-btn" aria-label="판결 크게 보기"><img src="img/cs_verdict.jpg" alt="지목된 사람이 범인으로 밝혀져 GUILTY 도장이 찍힌 장면" width="854" height="480" loading="lazy"></button><figcaption>판결</figcaption></figure>
             <figure><button type="button" class="shot-btn ov" aria-label="오버레이 크게 보기"><img src="img/cs_overlay.jpg" alt="OBS 오버레이의 사건 시각, 생존과 사망, 구조 무전, 펜션의 사람들 명단" width="560" height="520" loading="lazy"></button><figcaption>오버레이</figcaption></figure>
           </div>
+          <p class="gallery-label">전용 모드 화면</p>
+          <div class="gallery">
+            <figure><button type="button" class="shot-btn" aria-label="룰북 크게 보기"><img src="img/cs_rulebook.jpg" alt="영사 화면처럼 한 장씩 넘기는 룰북 슬라이드, 역할 카드 배분 장" width="1280" height="720" loading="lazy"></button><figcaption>룰북</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="역할 공개 크게 보기"><img src="img/cs_reveal.jpg" alt="당신은 경비원이라고 적힌 역할 공개 패널과 직업, 비밀, 신발 색" width="1280" height="720" loading="lazy"></button><figcaption>역할 공개</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="게임 HUD 크게 보기"><img src="img/cs_hud.jpg" alt="위쪽 시계와 생존 수, 왼쪽 인물, 오른쪽 할 일 목록, 아래 증거함 핫바와 심전도 체력" width="1280" height="720" loading="lazy"></button><figcaption>게임 HUD</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="인물 카드 크게 보기"><img src="img/cs_persona.jpg" alt="사건 파일처럼 꾸민 인물 카드에 직업, 비밀, 할 일이 적힌 화면" width="1280" height="720" loading="lazy"></button><figcaption>인물 카드</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="재판 투표 크게 보기"><img src="img/cs_votescreen.jpg" alt="참가자 얼굴 카드 중 범인을 골라 지목하는 재판 투표 화면" width="1280" height="720" loading="lazy"></button><figcaption>재판 투표</figcaption></figure>
+            <figure><button type="button" class="shot-btn" aria-label="사건 종결 크게 보기"><img src="img/cs_result.jpg" alt="탐정 승리와 사건 종결 도장, 참가자 역할 명단과 시간순 사건 일지" width="1280" height="720" loading="lazy"></button><figcaption>사건 종결</figcaption></figure>
+          </div>
         </div>
 
         <div>
@@ -535,6 +545,7 @@ footer .mono { letter-spacing: 0.06em; }
           <ul class="chips" aria-label="특징">
             <li>추리 · 상황극</li>
             <li>전용 리소스팩 자동 적용</li>
+            <li>전용 모드 지원</li>
             <li>OBS 오버레이</li>
           </ul>
           <dl class="facts">
@@ -554,6 +565,12 @@ footer .mono { letter-spacing: 0.06em; }
             <li>CCTV 다시보기 · 그 시간 카메라 앞을 지난 사람이 유령처럼 다시 걷습니다. 흉기를 꺼내 든 모습도 찍힙니다</li>
             <li>출입 기록부와 발자국 · 누가 언제 어느 문을 열었는지, 어떤 색 신발이 지나갔는지 남습니다</li>
             <li>정전 중엔 기록이 비고, 끝나면 숨겨져 있던 일까지 사건 일지로 공개됩니다</li>
+          </ul>
+          <h4>전용 모드를 쓰면</h4>
+          <ul class="ticks">
+            <li>체력바와 핫바가 심전도 모니터와 증거함으로 바뀌고, 시계 · 할 일 · 역할이 한 화면에 정리됩니다</li>
+            <li>K를 누르면 영사 슬라이드 17장짜리 룰북이 열려, 처음 하는 사람도 규칙을 바로 익힙니다</li>
+            <li>투표는 얼굴 카드를 눌러 지목하고, 끝나면 역할 명단과 사건 일지가 담긴 결과 화면이 뜹니다</li>
           </ul>
         </div>
       </div>
